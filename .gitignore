@@ -1,5 +1,13 @@
 *.iml
+*.gradle
+*.properties
+*.bat
+*.gradle
+gradlew
+.gitignore
 .gradle
+/gradle
+/.idea
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -13,3 +21,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/centralContainer1"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/round_corners_only"
+            android:background="#FFFFFF"
             android:gravity="top"
             android:orientation="vertical"
             android:paddingLeft="5dp"
@@ -43,6 +43,15 @@
                     android:layout_weight="20"
                     android:text="CHOOSE CITY"
                     android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/refreshBtn"
+                    style="@style/CustomCityButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:foregroundTint="#2DFF30"
+                    android:text="REFRESH" />
 
             </LinearLayout>
 
