@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Good Weather!</string>
+    <string name="CHOOSE_CITY">ВЫБЕРИТЕ ГОРОД</string>
+    <string name="WEATHER_FORECAST">ПРОГНОЗ ПОГОДЫ</string>
+    <string name="HOURS_24">24 ЧАСА</string>
+    <string name="DAYS_3">3 ДНЯ</string>
+    <string name="WEEKS_2">2 НЕДЕЛИ</string>
+</resources>
