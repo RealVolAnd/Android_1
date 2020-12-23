@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     return ThreeDaysFragment.newInstance("fp2");
                 }
                 case 2: {
-                    return OneWeekFragment.newInstance("fp3");
+                    return OneWeekFragment.newInstance("fp3 ");
                 }
                 default:
                     return TodayFragment.newInstance("fp1, Default");
