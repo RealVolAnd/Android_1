@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/stroke_only_round_left"
                 android:gravity="center"
-                android:text="-2"
+                android:text="-20"
                 android:textStyle="bold" />
 
             <TextView
@@ -55,25 +55,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/windDirText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_wind"
-                android:gravity="center"
-                android:text="N-W" />
-
-            <TextView
-                android:id="@+id/windSpeedText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_wind"
-                android:gravity="center|left"
-                android:text="1.0" />
-
-            <TextView
                 android:id="@+id/humidText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -87,14 +68,31 @@
                 android:id="@+id/pressText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/panel_2x_press"
                 android:gravity="center"
                 android:text="753" />
 
+            <TextView
+                android:id="@+id/windDirText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/panel_2x_wind"
+                android:gravity="center"
+                android:text="N-W" />
+
+            <TextView
+                android:id="@+id/windSpeedText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/panel_2x_wind"
+                android:gravity="center"
+                android:text="1.0" />
         </TableRow>
-
     </TableLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

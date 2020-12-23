@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //======================================
         String f1=getString(R.string.HOURS_24);
-        String f2=getString(R.string.DAYS_3);
+        String f2=getString(R.string.weekend);
         String f3=getString(R.string.WEEKS_2);
 
         titles = new String[]{f1, f2, f3};
@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter = new MyPagerAdapter(this);
         viewPager2.setAdapter(pagerAdapter);
         new TabLayoutMediator(tabLayout, viewPager2,(tab, position) -> tab.setText(titles[position])).attach();
-
-
     }
 
     private class MyPagerAdapter extends FragmentStateAdapter {
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         public MyPagerAdapter(FragmentActivity fa) {
             super(fa);
         }
-
 
         @Override
         public Fragment createFragment(int pos) {
@@ -71,12 +68,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (viewPager2.getCurrentItem() == 0) {
-
             super.onBackPressed();
         } else {
-
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1);
         }
     }
-
 }

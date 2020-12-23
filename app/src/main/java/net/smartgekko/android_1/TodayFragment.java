@@ -67,7 +67,6 @@ public class TodayFragment extends Fragment {
             pressText.setText("753");
 
             todayLayout.addView(v);
-
         }
         return v1;
     }

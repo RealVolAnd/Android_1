@@ -22,6 +22,7 @@ public class OneWeekFragment extends Fragment {
         View v1 = inflater.inflate(R.layout.fragment_rows, container, false);
 
         LinearLayout oneWeekLayout = (LinearLayout) v1.findViewById(R.id.rowsLayout);
+        oneWeekLayout.removeAllViews();
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
@@ -62,8 +63,6 @@ public class OneWeekFragment extends Fragment {
             pressText.setText("753");
 
             oneWeekLayout.addView(v);
-
-
         }
         return v1;
     }

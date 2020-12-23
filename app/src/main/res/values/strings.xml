@@ -5,4 +5,11 @@
     <string name="HOURS_24">24 HOURS</string>
     <string name="DAYS_3">3 DAYS</string>
     <string name="WEEKS_2">2 WEEKS</string>
+    <string name="mmhg">mmHg</string>
+    <string name="pressure">Pressure:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="wind">Wind:</string>
+    <string name="settings">SETTINGS</string>
+    <string name="weekend">WEEKEND</string>
+    <string name="next_message">Heavy snow is expected in the next 2 hours</string>
 </resources>

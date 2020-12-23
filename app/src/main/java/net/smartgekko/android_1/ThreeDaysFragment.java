@@ -66,8 +66,6 @@ public class ThreeDaysFragment extends Fragment {
 
             threeDayLayout.addView(v);
         }
-
-
         return v1;
     }
 
