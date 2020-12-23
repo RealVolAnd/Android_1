@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,6 +26,21 @@ public class MainActivity extends AppCompatActivity {
     TextView cityBtn;
     ConstraintLayout pL, wL;
     TabLayout tabLayout;
+
+    @Override
+    protected void onPause() {
+        Utilites.showAlert(this,"MainActivity.OnPause");
+        Log.d("MainActivity","Paused");
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Utilites.showAlert(this,"MainActivity.OnResume");
+        Log.d("MainActivity","Resumed");
+        super.onResume();
+    }
+
     Settings settings;
     private String[] titles;
     private static final int NUM_PAGES = 3;
@@ -32,14 +48,31 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SETTINGS = 11;
 
     @Override
+    protected void onStart() {
+        Utilites.showAlert(this,"MainActivity.OnStart");
+        Log.d("MainActivity","Started");
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onStop() {
+        Utilites.showAlert(this,"MainActivity.OnStop");
+        Log.d("MainActivity","Stopped");
+        super.onStop();
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         settings = new Settings(this);
-
         setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //======================================
+        Utilites.showAlert(this,"MainActivity.OnCreate");
+        Log.d("MainActivity","Created");
         String f1 = getString(R.string.HOURS_24);
         String f2 = getString(R.string.weekend);
         String f3 = getString(R.string.WEEKS_2);
@@ -62,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        Utilites.showAlert(this,"MainActivity.OnDestroy");
+        Log.d("MainActivity","Destroyed");
         settings.saveData();
         super.onDestroy();
     }
