@@ -12,4 +12,14 @@
     <string name="settings">НАСТРОЙКИ</string>
     <string name="weekend">ВЫХОДНЫЕ</string>
     <string name="next_message">В  ближайшие 2 часа ожидается сильный снегопад</string>
+    <string name="set">Выбрать город</string>
+    <string name="or_select_one_below">или выберите из списка</string>
+    <string name="type_city_name_here">Введите название города здесь</string>
+    <string name="city_screen">ВЫБОР ГОРОДА</string>
+    <string name="show_wind_and_prssure_data">Показывать информацию о ветре и давлении</string>
+    <string name="cancel">ОТМЕНИТЬ</string>
+    <string name="citynametext">Необходимо выбрать название города</string>
+    <string name="settings_screen">ЭКРАН НАСТРОЕК</string>
+    <string name="set_theme">Установить тему:</string>
+    <string name="select_theme_first">Выберите тему</string>
 </resources>

@@ -9,7 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,21 +27,21 @@ public class TodayFragment extends Fragment {
 
         DateFormat df = new SimpleDateFormat("HH");
         String data = df.format(new Date());
-        int startTime=Integer.parseInt(data);
+        int startTime = Integer.parseInt(data);
 
         TableLayout tableLayout;
 
         for (int i = 0; i < 24; i++) {
             startTime++;
-            if(startTime==24)startTime=0;
+            if (startTime == 24) startTime = 0;
             String timeString = String.valueOf(startTime);
-            if(startTime<10) timeString="0"+timeString;
-            timeString+=":00";
+            if (startTime < 10) timeString = "0" + timeString;
+            timeString += ":00";
 
             View v = inflater.inflate(R.layout.one_row, container, false);
 
-            tableLayout=(TableLayout) v.findViewById(R.id.tableLayout);
-            tableLayout.setId(1100+i);
+            tableLayout = (TableLayout) v.findViewById(R.id.tableLayout);
+            tableLayout.setId(1100 + i);
             TableRow dayRow = (TableRow) v.findViewById(R.id.dayRow);
 
             TextView dateText = (TextView) v.findViewById(R.id.dateText);
@@ -70,7 +72,6 @@ public class TodayFragment extends Fragment {
         }
         return v1;
     }
-
 
 
     public static TodayFragment newInstance(String text) {

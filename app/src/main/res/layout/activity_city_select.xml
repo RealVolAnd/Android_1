@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CitySelectActivity">
+
+    <Button
+        android:id="@+id/cityButtonCancel"
+        style="@style/CustomCityButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="closeActivity"
+        android:text="@string/cancel"
+        android:textColor="#000000"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cityButtonSave"
+        app:layout_constraintEnd_toStartOf="@+id/cityButtonSave"
+        app:strokeColor="?attr/colorPrimaryVariant"
+        app:strokeWidth="1dp" />
+
+    <Button
+        android:id="@+id/cityButtonSave"
+        style="@style/CustomCityButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="sendResultAndCloseActivity"
+        android:text="@string/set"
+        android:textColor="#000000"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityAddParams"
+        app:strokeColor="?attr/colorPrimaryVariant"
+        app:strokeWidth="1dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/cityText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/type_city_name_here"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="textPersonName"
+        android:lines="1"
+        android:minLines="1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityTextBox" />
+
+    <TextView
+        android:id="@+id/cityTextBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryVariant"
+        android:paddingStart="8dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="5dp"
+        android:text="@string/city_screen"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cityAddParams"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:checked="true"
+        android:text="@string/show_wind_and_prssure_data"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

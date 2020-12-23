@@ -9,7 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,8 +38,8 @@ public class OneWeekFragment extends Fragment {
 
             View v = inflater.inflate(R.layout.one_row, container, false);
 
-            tableLayout=(TableLayout) v.findViewById(R.id.tableLayout);
-            tableLayout.setId(3100+i);
+            tableLayout = (TableLayout) v.findViewById(R.id.tableLayout);
+            tableLayout.setId(3100 + i);
             TableRow dayRow = (TableRow) v.findViewById(R.id.dayRow);
 
 

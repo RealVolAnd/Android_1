@@ -9,6 +9,8 @@
     <color name="gray">#23000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#00FF00</color>
+    <color name="darkgreen">#029A02</color>
+    <color name="red">#FF0000</color>
     <color name="windLayout">#60B72364</color>
     <color name="pressLayout">#63FFB300</color>
     <color name="humidLayout">#7400ACFF</color>
