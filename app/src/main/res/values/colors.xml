@@ -6,5 +6,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="gray">#23000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#00FF00</color>
+    <color name="windLayout">#60B72364</color>
+    <color name="pressLayout">#63FFB300</color>
+    <color name="humidLayout">#7400ACFF</color>
+    <color name="todayLayout">#2FCBCDCD</color>
 </resources>
