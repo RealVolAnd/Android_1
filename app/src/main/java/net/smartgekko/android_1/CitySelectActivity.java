@@ -20,27 +20,20 @@ import java.util.Set;
 public class CitySelectActivity extends AppCompatActivity {
     AutoCompleteTextView cityText;
     CheckBox cityAddParams;
+    Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int defTheme = 0;
-        Intent intent = getIntent();
-        try {
-            defTheme = getPackageManager().getPackageInfo(getPackageName(), 0).applicationInfo.theme;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        setTheme(intent.getIntExtra("theme", defTheme));
-
+        settings=Settings.getInstance(this);
+        setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_select);
         //============================
 
         cityText = (AutoCompleteTextView) findViewById(R.id.cityText);
-        cityText.setText(intent.getStringExtra("city"));
+        cityText.setText(settings.getCity());
         cityAddParams = (CheckBox) findViewById(R.id.cityAddParams);
-        cityAddParams.setChecked(intent.getBooleanExtra("cityAddParams", true));
-
+        cityAddParams.setChecked(settings.isNeedWindAndPressure());
         fillCityList(new Datastore().getCities());
     }
 
@@ -61,8 +54,8 @@ public class CitySelectActivity extends AppCompatActivity {
     public void sendResultAndCloseActivity(View v) {
         if (cityText.getText().length() > 0) {
             Intent intent = new Intent();
-            intent.putExtra("cityName", cityText.getText().toString());
-            intent.putExtra("cityAddParams", cityAddParams.isChecked());
+            settings.setCity(cityText.getText().toString());
+            settings.setNeedWindAndPressure(cityAddParams.isChecked());
             setResult(RESULT_OK, intent);
             super.finish();
         } else {

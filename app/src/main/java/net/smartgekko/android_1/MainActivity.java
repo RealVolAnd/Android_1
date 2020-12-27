@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        settings = new Settings(this);
+        settings = Settings.getInstance(this);
         setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -109,16 +109,9 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (requestCode) {
             case REQUEST_CODE_CITY:
-                settings.setCity(data.getStringExtra("cityName"));
-                settings.setNeedWindAndPressure(data.getBooleanExtra("cityAddParams", true));
                 refreshData();
                 break;
             case REQUEST_CODE_SETTINGS:
-                try {
-                    settings.setTheme(data.getIntExtra("settingsTheme", this.getPackageManager().getPackageInfo(this.getPackageName(), 0).applicationInfo.theme));
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                }
                 recreate();
                 break;
             default:

@@ -14,22 +14,17 @@ import java.util.HashMap;
 public class SettingsActivity extends AppCompatActivity {
     HashMap<String, Integer> themesList;
     Spinner settingsTheme;
+    Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int defTheme = 0;
-        Intent intent = getIntent();
-        try {
-            defTheme = getPackageManager().getPackageInfo(getPackageName(), 0).applicationInfo.theme;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        setTheme(intent.getIntExtra("theme", defTheme));
+        settings=Settings.getInstance(this);
+        setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        themesList = (HashMap<String, Integer>) intent.getSerializableExtra("themesList");
+        themesList =settings.getThemesList();
         fillThemesList();
+
 
     }
 
@@ -40,8 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void sendResultAndCloseActivity(View v) {
         if (settingsTheme.getSelectedItem().toString().length() > 0) {
             Intent intent = new Intent();
-            intent.putExtra("settingsTheme", themesList.get(settingsTheme.getSelectedItem().toString()));
             setResult(RESULT_OK, intent);
+            settings.setTheme(themesList.get(settingsTheme.getSelectedItem().toString()));
             super.finish();
         } else {
             Utilites.showAlert(this, getString(R.string.select_theme_first));
@@ -49,11 +44,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void fillThemesList() {
-        String[] data = themesList.keySet().toArray(new String[0]);
-
         settingsTheme = (Spinner) findViewById(R.id.settingsTheme);
+        String[] data = themesList.keySet().toArray(new String[0]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_tune, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         settingsTheme.setAdapter(adapter);
+        settingsTheme.setSelection(0);
     }
 }

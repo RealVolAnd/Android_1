@@ -12,7 +12,7 @@
     <string name="settings">SETTINGS</string>
     <string name="weekend">WEEKEND</string>
     <string name="next_message">Heavy snow is expected in the next 2 hours</string>
-    <string name="set">Set city</string>
+    <string name="set">SAVE</string>
     <string name="or_select_one_below">Or select one below</string>
     <string name="type_city_name_here">Type city name here</string>
     <string name="city_screen">CITY SCREEN</string>
@@ -22,4 +22,5 @@
     <string name="settings_screen">SETTINGS SCREEN</string>
     <string name="set_theme">Set theme:</string>
     <string name="select_theme_first">Select Theme first</string>
+    <string name="save_settings">SAVE SETTINGS</string>
 </resources>
