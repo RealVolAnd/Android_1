@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        Utilites.showAlert(this,"MainActivity.OnPause");
-        Log.d("MainActivity","Paused");
+        Utilites.showAlert(this, "MainActivity.OnPause");
+        Log.d("MainActivity", "Paused");
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        Utilites.showAlert(this,"MainActivity.OnResume");
-        Log.d("MainActivity","Resumed");
+        Utilites.showAlert(this, "MainActivity.OnResume");
+        Log.d("MainActivity", "Resumed");
         super.onResume();
     }
 
@@ -49,16 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        Utilites.showAlert(this,"MainActivity.OnStart");
-        Log.d("MainActivity","Started");
+        Utilites.showAlert(this, "MainActivity.OnStart");
+        Log.d("MainActivity", "Started");
         super.onStart();
 
     }
 
     @Override
     protected void onStop() {
-        Utilites.showAlert(this,"MainActivity.OnStop");
-        Log.d("MainActivity","Stopped");
+        Utilites.showAlert(this, "MainActivity.OnStop");
+        Log.d("MainActivity", "Stopped");
         super.onStop();
 
     }
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //======================================
-        Utilites.showAlert(this,"MainActivity.OnCreate");
-        Log.d("MainActivity","Created");
+        Utilites.showAlert(this, "MainActivity.OnCreate");
+        Log.d("MainActivity", "Created");
         String f1 = getString(R.string.HOURS_24);
         String f2 = getString(R.string.weekend);
         String f3 = getString(R.string.WEEKS_2);
@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        Utilites.showAlert(this,"MainActivity.OnDestroy");
-        Log.d("MainActivity","Destroyed");
+        Utilites.showAlert(this, "MainActivity.OnDestroy");
+        Log.d("MainActivity", "Destroyed");
         settings.saveData();
         super.onDestroy();
     }
