@@ -24,7 +24,7 @@ public class CitySelectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        settings=Settings.getInstance(this);
+        settings = Settings.getInstance(this);
         setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_select);
