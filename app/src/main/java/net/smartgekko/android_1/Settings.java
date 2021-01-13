@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Settings {
+    private static Settings instance;
     private final String SETTINGS_FILE_PATH = "gw_config_save";
     private HashMap<String, Integer> themesList;
     private Context context;
@@ -23,7 +24,7 @@ public class Settings {
     private int theme;
     private boolean needWindAndPressure = true;
 
-    public Settings(Context context) {
+    private Settings(Context context) {
         this.context = context;
         try {
             theme = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).applicationInfo.theme;
@@ -34,6 +35,13 @@ public class Settings {
         fillThemesList();
 
         loadData();
+    }
+
+    public static Settings getInstance(Context context) {
+        if (instance == null) {
+            instance = new Settings(context);
+        }
+        return instance;
     }
 
     public String getCity() {
@@ -68,7 +76,7 @@ public class Settings {
     private void fillThemesList() {
         themesList = new HashMap<String, Integer>();
         themesList.put("Black theme", R.style.Theme_GW_Black);
-        themesList.put("Purple theme", R.style.Theme_GW_Purple);
+        themesList.put("Purpl theme", R.style.Theme_GW_Purpl);
     }
 
     private void loadData() {

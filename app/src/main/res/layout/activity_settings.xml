@@ -30,6 +30,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/set_theme"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityTextBox" />
 
@@ -69,7 +70,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:onClick="sendResultAndCloseActivity"
-        android:text="SAVE SETTINGS"
+        android:text="@string/save_settings"
         android:textColor="#000000"
         app:cornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
