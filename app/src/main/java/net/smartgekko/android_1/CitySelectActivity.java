@@ -34,7 +34,7 @@ public class CitySelectActivity extends AppCompatActivity {
         cityText.setText(settings.getCity());
         cityAddParams = (CheckBox) findViewById(R.id.cityAddParams);
         cityAddParams.setChecked(settings.isNeedWindAndPressure());
-        fillCityList(new Datastore().getCities());
+        fillCityList(new Datastore(this).getCities());
     }
 
 

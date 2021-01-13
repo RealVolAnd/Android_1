@@ -23,4 +23,6 @@
     <string name="set_theme">Set theme:</string>
     <string name="select_theme_first">Select Theme first</string>
     <string name="save_settings">SAVE SETTINGS</string>
+    <string name="show_city_information">Show City Information</string>
+    <string name="Moscow">Moscow</string>
 </resources>
