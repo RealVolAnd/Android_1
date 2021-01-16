@@ -62,4 +62,9 @@ public class CitySelectActivity extends AppCompatActivity {
             Utilites.showAlert(this, getString(R.string.citynametext));
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

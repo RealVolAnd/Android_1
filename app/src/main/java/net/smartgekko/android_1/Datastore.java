@@ -17,12 +17,15 @@ public class Datastore {
     private void initDatastore() {
         cities = new ArrayList<>();
         cities.add("Moscow");
-        cities.add("Saint Peresburg");
+        cities.add("Saint Petersburg");
         cities.add("Novosibirsk");
         cities.add("Krasnoyarsk");
         cities.add("Irkutsk");
         cities.add("Khabarovsk");
         cities.add("Vladivostok");
+        cities.add("London");
+        cities.add("Paris");
+        cities.add("Istambul");
     }
 
 }

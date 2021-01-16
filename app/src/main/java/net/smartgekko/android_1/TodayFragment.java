@@ -10,6 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.text.DateFormat;
@@ -20,9 +22,12 @@ public class TodayFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v1 = inflater.inflate(R.layout.fragment_rows, container, false);
+     return inflater.inflate(R.layout.fragment_rows, container, false);
+    }
 
-        LinearLayout todayLayout = (LinearLayout) v1.findViewById(R.id.rowsLayout);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        LayoutInflater inflater = getLayoutInflater();
+        LinearLayout todayLayout = (LinearLayout) view.findViewById(R.id.rowsLayout);
         todayLayout.removeAllViews();
 
         DateFormat df = new SimpleDateFormat("HH");
@@ -38,13 +43,13 @@ public class TodayFragment extends Fragment {
             if (startTime < 10) timeString = "0" + timeString;
             timeString += ":00";
 
-            View v = inflater.inflate(R.layout.one_row, container, false);
+            View v = inflater.inflate(R.layout.one_row, todayLayout, false);
 
             tableLayout = (TableLayout) v.findViewById(R.id.tableLayout);
             tableLayout.setId(1100 + i);
             TableRow dayRow = (TableRow) v.findViewById(R.id.dayRow);
 
-            TextView dateText = (TextView) v.findViewById(R.id.dateText);
+            TextView dateText = (TextView) v.findViewById(R.id.cityTextView);
             dateText.setText(timeString);
 
             ImageView weatherImage = (ImageView) v.findViewById(R.id.weatherImage);
@@ -70,7 +75,7 @@ public class TodayFragment extends Fragment {
 
             todayLayout.addView(v);
         }
-        return v1;
+        //return v1;
     }
 
 

@@ -24,8 +24,6 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         themesList = settings.getThemesList();
         fillThemesList();
-
-
     }
 
     public void closeActivity(View v) {
@@ -36,7 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
         if (settingsTheme.getSelectedItem().toString().length() > 0) {
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
+            settings.saveData();
             settings.setTheme(themesList.get(settingsTheme.getSelectedItem().toString()));
+            settings.saveData();
             super.finish();
         } else {
             Utilites.showAlert(this, getString(R.string.select_theme_first));
@@ -50,5 +50,10 @@ public class SettingsActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         settingsTheme.setAdapter(adapter);
         settingsTheme.setSelection(0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

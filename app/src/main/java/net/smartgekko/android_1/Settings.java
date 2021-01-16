@@ -31,9 +31,7 @@ public class Settings {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
         fillThemesList();
-
         loadData();
     }
 
@@ -42,6 +40,10 @@ public class Settings {
             instance = new Settings(context);
         }
         return instance;
+    }
+
+    public void clearInstance() {
+        instance = null;
     }
 
     public String getCity() {
@@ -79,7 +81,7 @@ public class Settings {
         themesList.put("Purpl theme", R.style.Theme_GW_Purpl);
     }
 
-    private void loadData() {
+    public void loadData() {
         directory = context.getFilesDir();
         SAVE_FILE = new File(directory, SETTINGS_FILE_PATH);
         try {
