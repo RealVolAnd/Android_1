@@ -23,6 +23,9 @@ public class Settings {
     private String city = "Moscow";
     private int theme;
     private boolean needWindAndPressure = true;
+    private Datastore dataStore;
+    private ArrayList<String[]> weatherHourly;
+    private ArrayList<String[]> weatherDaily;
 
     private Settings(Context context) {
         this.context = context;
@@ -33,9 +36,25 @@ public class Settings {
         }
 
         fillThemesList();
-
         loadData();
+        dataStore=new Datastore();
+        weatherHourly = new ArrayList<>();
+        weatherDaily = new ArrayList<>();
+        refreshWeatherData();
     }
+
+    public ArrayList<String[]> getHourlyWeather(){
+        return this.weatherHourly;
+    }
+    public ArrayList<String[]> getDailyWeather(){
+        return this.weatherDaily;
+    }
+
+    private void refreshWeatherData(){
+        weatherHourly.addAll(dataStore.getWeatherHourly(this.city.toUpperCase()));
+        weatherDaily.addAll(dataStore.getWeatherDaily(this.city.toUpperCase()));
+    }
+
 
     public static Settings getInstance(Context context) {
         if (instance == null) {
@@ -43,13 +62,17 @@ public class Settings {
         }
         return instance;
     }
+    public void destroyInstance(){
+        instance=null;
+    }
 
     public String getCity() {
         return this.city.toUpperCase();
     }
 
+
     public void setCity(String city) {
-        this.city = city.toUpperCase();
+        refreshWeatherData();
     }
 
     public boolean isNeedWindAndPressure() {

@@ -1,98 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tableLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <TableLayout
-        android:id="@+id/tableLayout"
+    <TableRow
+        android:id="@+id/dayRow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#56CBCDCD">
 
-        <TableRow
-            android:id="@+id/dayRow"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:background="#56CBCDCD">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="21.12"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/dateText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="21.12"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/weatherImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/snowrain" />
 
-            <ImageView
-                android:id="@+id/weatherImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/snowrain" />
+        <TextView
+            android:id="@+id/tempText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/stroke_only_round_left"
+            android:gravity="center"
+            android:text="-20"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tempText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke_only_round_left"
-                android:gravity="center"
-                android:text="-20"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tempTextN"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/stroke_only_round_right"
+            android:gravity="center"
+            android:text="-10"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tempTextN"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/stroke_only_round_right"
-                android:gravity="center"
-                android:text="-10"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/humidText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/panel_2x_humid"
+            android:gravity="center"
+            android:text="90%" />
 
-            <TextView
-                android:id="@+id/humidText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_humid"
-                android:gravity="center"
-                android:text="90%" />
+        <TextView
+            android:id="@+id/pressText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/panel_2x_press"
+            android:gravity="center"
+            android:text="753" />
 
-            <TextView
-                android:id="@+id/pressText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_press"
-                android:gravity="center"
-                android:text="753" />
+        <TextView
+            android:id="@+id/windDirText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/panel_2x_wind"
+            android:gravity="center"
+            android:text="N-W" />
 
-            <TextView
-                android:id="@+id/windDirText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_wind"
-                android:gravity="center"
-                android:text="N-W" />
-
-            <TextView
-                android:id="@+id/windSpeedText"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/panel_2x_wind"
-                android:gravity="center"
-                android:text="1.0" />
-        </TableRow>
-    </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/windSpeedText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/panel_2x_wind"
+            android:gravity="center"
+            android:text="1.0" />
+    </TableRow>
+</TableLayout>

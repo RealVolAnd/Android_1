@@ -7,12 +7,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.TaskStackBuilder;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,15 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        Utilites.showAlert(this, "MainActivity.OnPause");
-        Log.d("MainActivity", "Paused");
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        Utilites.showAlert(this, "MainActivity.OnResume");
-        Log.d("MainActivity", "Resumed");
         super.onResume();
     }
 
@@ -48,22 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SETTINGS = 11;
 
     @Override
-    protected void onStart() {
-        Utilites.showAlert(this, "MainActivity.OnStart");
-        Log.d("MainActivity", "Started");
-        super.onStart();
-
-    }
-
-    @Override
-    protected void onStop() {
-        Utilites.showAlert(this, "MainActivity.OnStop");
-        Log.d("MainActivity", "Stopped");
-        super.onStop();
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         settings = Settings.getInstance(this);
@@ -71,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //======================================
-        Utilites.showAlert(this, "MainActivity.OnCreate");
-        Log.d("MainActivity", "Created");
         String f1 = getString(R.string.HOURS_24);
         String f2 = getString(R.string.weekend);
         String f3 = getString(R.string.WEEKS_2);
@@ -86,18 +60,24 @@ public class MainActivity extends AppCompatActivity {
         viewPager2.setAdapter(pagerAdapter);
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText(titles[position])).attach();
 
-
         refreshData();
-
     }
-    //-------------------------------------------------------------------------------------------
 
+    //-------------------------------------------------------------------------------------------
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
     @Override
     protected void onDestroy() {
-        Utilites.showAlert(this, "MainActivity.OnDestroy");
-        Log.d("MainActivity", "Destroyed");
         settings.saveData();
+        settings.destroyInstance();
         super.onDestroy();
     }
 
@@ -135,19 +115,13 @@ public class MainActivity extends AppCompatActivity {
         setTheme(settings.getTheme());
     }
 
-
     public void openCityScreen(View v) {
         Intent intent = new Intent(this, CitySelectActivity.class);
-        intent.putExtra("city", settings.getCity());
-        intent.putExtra("cityAddParams", settings.isNeedWindAndPressure());
-        intent.putExtra("theme", settings.getTheme());
         startActivityForResult(intent, REQUEST_CODE_CITY);
     }
 
     public void openSettingsScreen(View v) {
         Intent intent = new Intent(this, SettingsActivity.class);
-        intent.putExtra("theme", settings.getTheme());
-        intent.putExtra("themesList", settings.getThemesList());
         startActivityForResult(intent, REQUEST_CODE_SETTINGS);
     }
 
@@ -161,17 +135,17 @@ public class MainActivity extends AppCompatActivity {
         public Fragment createFragment(int pos) {
             switch (pos) {
                 case 0: {
-                    return TodayFragment.newInstance("fp1");
+                    return ForecastFragment.newInstance("1");
                 }
                 case 1: {
 
-                    return ThreeDaysFragment.newInstance("fp2");
+                    return ForecastFragment.newInstance("2");
                 }
                 case 2: {
-                    return OneWeekFragment.newInstance("fp3 ");
+                    return ForecastFragment.newInstance("3");
                 }
                 default:
-                    return TodayFragment.newInstance("fp1, Default");
+                    return ForecastFragment.newInstance("1");
             }
         }
 
