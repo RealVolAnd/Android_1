@@ -72,6 +72,7 @@ public class Settings {
 
 
     public void setCity(String city) {
+        this.city = city.toUpperCase();
         refreshWeatherData();
     }
 
