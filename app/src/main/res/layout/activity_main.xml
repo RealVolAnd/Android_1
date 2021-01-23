@@ -15,8 +15,8 @@
             android:id="@+id/settingsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/stroke_only_round_transparent"
             android:onClick="openSettingsScreen"
             android:paddingStart="8dp"
@@ -24,8 +24,8 @@
             android:paddingEnd="8dp"
             android:paddingBottom="2dp"
             android:text="@string/settings"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nextLayout" />
 
         <ImageView
@@ -62,9 +62,10 @@
             android:id="@+id/weatherImageBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tempTextBig"
-            app:layout_constraintTop_toTopOf="@+id/warningImage"
+            app:layout_constraintTop_toBottomOf="@+id/settingsBtn"
             app:srcCompat="@drawable/tucha1" />
 
         <ImageView
@@ -72,10 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:scaleType="fitStart"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cityBtn"
             app:layout_constraintTop_toBottomOf="@+id/cityBtn"
             app:srcCompat="@drawable/gololed" />
 
@@ -84,12 +84,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="-3"
+            android:layout_marginTop="32dp"
+            android:text="-30"
             android:textAlignment="center"
             android:textSize="90sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/warningImage" />
+            app:layout_constraintTop_toBottomOf="@+id/cityBtn" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            app:layout_constraintTop_toBottomOf="@+id/tempTextBig">
+
+            <TextView
+                android:id="@+id/hT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="2"
+                android:text="@string/humidity"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/hI" />
+
+            <ImageView
+                android:id="@+id/hI"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/panel_2x_humid"
+                app:layout_constraintBottom_toBottomOf="@+id/hT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/hT" />
+
+            <TextView
+                android:id="@+id/hX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="90"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/hT"
+                app:layout_constraintStart_toEndOf="@+id/hI" />
+
+            <TextView
+                android:id="@+id/hY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="%"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/hX"
+                app:layout_constraintStart_toEndOf="@+id/hX" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pL"
@@ -150,61 +205,6 @@
                 app:layout_constraintStart_toEndOf="@+id/pX"
                 app:layout_constraintTop_toTopOf="@+id/pX" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/hL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/tempTextBig">
-
-            <TextView
-                android:id="@+id/hT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="2"
-                android:text="@string/humidity"
-                android:textAlignment="textStart"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/hI"/>
-
-            <ImageView
-                android:id="@+id/hI"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/panel_2x_humid"
-                app:layout_constraintBottom_toBottomOf="@+id/hT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/hT" />
-
-            <TextView
-                android:id="@+id/hX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="90"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/hT"
-                app:layout_constraintStart_toEndOf="@+id/hI" />
-
-            <TextView
-                android:id="@+id/hY"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="%"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/hX"
-                app:layout_constraintStart_toEndOf="@+id/hX" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -291,8 +291,8 @@
             android:id="@+id/cityBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:background="@drawable/stroke_only_round_transparent"
             android:onClick="openCityScreen"
             android:paddingStart="8dp"
@@ -305,8 +305,8 @@
             android:text="@string/CHOOSE_CITY"
             android:textAlignment="viewEnd"
             android:textColor="#82000000"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nextLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
