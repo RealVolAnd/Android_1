@@ -131,7 +131,7 @@ public class Settings {
             }
 
         } catch (Exception e) {
-            Utilites.showAlert(context, "Settings File open error");
+            Utilites.showAlert(this.context, "Settings File open error");
 
         }
 

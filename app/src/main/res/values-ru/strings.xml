@@ -23,4 +23,6 @@
     <string name="set_theme">Установить тему:</string>
     <string name="select_theme_first">Выберите тему</string>
     <string name="save_settings">СОХРАНИТЬ</string>
+    <string name="Save_settings_A">Сохранить настройки?</string>
+    <string name="Save_A">Сохранить</string>
 </resources>

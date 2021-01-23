@@ -20,7 +20,7 @@ public class ForecastFragment extends Fragment implements IRVOnitemClick {
     RecyclerView recyclerView;
     private ForecastDataAdapter adapter;
     private ArrayList<String[]> listData;
-    View v1;
+   // View v1;
     String fragmentType = "1";
 
     public ForecastFragment(){
@@ -101,6 +101,6 @@ public class ForecastFragment extends Fragment implements IRVOnitemClick {
 
     @Override
     public void onItemClicked(String ItemText) {
-        Utilites.showAlert(getContext(), ItemText);
+        Utilites.showAlertSnack(this.getView(),getContext(), ItemText);
     }
 }

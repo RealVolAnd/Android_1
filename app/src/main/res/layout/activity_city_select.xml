@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CitySelectActivity">
@@ -26,9 +27,9 @@
         style="@style/CustomCityButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="sendResultAndCloseActivity"
+        android:onClick="showSnack"
         android:text="@string/set"
         android:textColor="#000000"
         app:cornerRadius="5dp"
@@ -37,24 +38,32 @@
         app:strokeColor="?attr/colorPrimaryVariant"
         app:strokeWidth="1dp" />
 
-    <AutoCompleteTextView
-        android:id="@+id/cityText"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/city_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:editable="false"
-        android:ems="10"
-        android:hint="@string/type_city_name_here"
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="textPersonName"
-        android:lines="1"
-        android:minLines="1"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityTextBox" />
+        app:layout_constraintTop_toBottomOf="@+id/cityTextBox">
+
+        <AutoCompleteTextView
+            android:id="@+id/cityText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="textPersonName"
+            android:lines="1"
+            android:minLines="1"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityTextBox" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/cityTextBox"
@@ -85,6 +94,6 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityText" />
+        app:layout_constraintTop_toBottomOf="@+id/city_text_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

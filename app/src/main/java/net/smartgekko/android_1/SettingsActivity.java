@@ -3,11 +3,12 @@ package net.smartgekko.android_1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 
@@ -32,6 +33,18 @@ public class SettingsActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public  void showSnack(View view){
+        Snackbar snackbar = Snackbar.make(view, R.string.Save_settings_A, Snackbar.LENGTH_LONG);
+
+        snackbar.setAction(R.string.Save_A, new View.OnClickListener (){
+            @Override
+            public void onClick(View v) {
+                sendResultAndCloseActivity(v);
+            }
+        });
+        snackbar.show();
+    }
+
     public void sendResultAndCloseActivity(View v) {
         if (settingsTheme.getSelectedItem().toString().length() > 0) {
             Intent intent = new Intent();
@@ -39,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
             settings.setTheme(themesList.get(settingsTheme.getSelectedItem().toString()));
             super.finish();
         } else {
-            Utilites.showAlert(this, getString(R.string.select_theme_first));
+            Utilites.showAlertSnack(v,this, getString(R.string.select_theme_first));
         }
     }
 

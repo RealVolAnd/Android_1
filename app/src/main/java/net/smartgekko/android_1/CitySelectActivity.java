@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,6 +53,18 @@ public class CitySelectActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public  void showSnack(View view){
+        Snackbar snackbar = Snackbar.make(view, R.string.Save_settings_A, Snackbar.LENGTH_LONG);
+
+        snackbar.setAction(R.string.Save_A, new View.OnClickListener (){
+            @Override
+            public void onClick(View v) {
+                sendResultAndCloseActivity(v);
+            }
+        });
+        snackbar.show();
+    }
+
     public void sendResultAndCloseActivity(View v) {
         if (cityText.getText().length() > 0) {
             Intent intent = new Intent();
@@ -59,7 +73,7 @@ public class CitySelectActivity extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             super.finish();
         } else {
-            Utilites.showAlert(this, getString(R.string.citynametext));
+            Utilites.showAlertSnack(this.findViewById(R.id.cityLayout),this, getString(R.string.citynametext));
         }
     }
 }
