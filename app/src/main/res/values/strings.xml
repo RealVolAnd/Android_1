@@ -25,4 +25,7 @@
     <string name="save_settings">SAVE SETTINGS</string>
     <string name="Save_settings_A">Save settings?</string>
     <string name="Save_A">Save</string>
+    <string name="m_s">m/s</string>
+    <string name="server_get_data_error">Server connection error</string>
+    <string name="no_city_info">City has not found at this time</string>
 </resources>

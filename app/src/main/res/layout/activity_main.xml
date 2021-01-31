@@ -130,7 +130,7 @@
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/hT"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/hI" />
 
             <TextView
@@ -255,12 +255,26 @@
                 android:id="@+id/wY"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:text="1.0"
                 android:textSize="20sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/wX"
                 app:layout_constraintStart_toEndOf="@+id/wX"
+                app:layout_constraintTop_toTopOf="@+id/wX" />
+
+            <TextView
+                android:id="@+id/wZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/m_s"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/wX"
+                app:layout_constraintStart_toEndOf="@+id/wY"
                 app:layout_constraintTop_toTopOf="@+id/wX" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

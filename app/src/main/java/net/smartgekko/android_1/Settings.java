@@ -2,17 +2,35 @@ package net.smartgekko.android_1;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+
+import com.google.gson.Gson;
+
+import net.smartgekko.android_1.model.WeatherRequest;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class Settings {
     private static Settings instance;
@@ -26,8 +44,17 @@ public class Settings {
     private Datastore dataStore;
     private ArrayList<String[]> weatherHourly;
     private ArrayList<String[]> weatherDaily;
+    private static final String TAG = "WEATHER";
+    private String currentTemp = "0";
+    private String currentHumid = "0";
+    private String currentPress = "0";
+    private String currentWindDir = "0";
+    private String currentWindSpeed = "0";
+    private static String weather_URL;
+
 
     private Settings(Context context) {
+
         this.context = context;
         try {
             theme = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).applicationInfo.theme;
@@ -37,20 +64,23 @@ public class Settings {
 
         fillThemesList();
         loadData();
-        dataStore=new Datastore();
+        dataStore = new Datastore();
         weatherHourly = new ArrayList<>();
         weatherDaily = new ArrayList<>();
         refreshWeatherData();
     }
 
-    public ArrayList<String[]> getHourlyWeather(){
+
+    public ArrayList<String[]> getHourlyWeather() {
         return this.weatherHourly;
     }
-    public ArrayList<String[]> getDailyWeather(){
+
+    public ArrayList<String[]> getDailyWeather() {
         return this.weatherDaily;
     }
 
-    private void refreshWeatherData(){
+    private void refreshWeatherData() {
+        getWeatherDataFromServerForCityId(dataStore.getCityIdByName(city));
         weatherHourly.addAll(dataStore.getWeatherHourly(this.city.toUpperCase()));
         weatherDaily.addAll(dataStore.getWeatherDaily(this.city.toUpperCase()));
     }
@@ -62,18 +92,43 @@ public class Settings {
         }
         return instance;
     }
-    public void destroyInstance(){
-        instance=null;
+
+    public void destroyInstance() {
+        instance = null;
     }
 
     public String getCity() {
         return this.city.toUpperCase();
     }
 
-
     public void setCity(String city) {
-        this.city = city.toUpperCase();
+        if (dataStore.getCities().contains(city)) {
+            this.city = city.toUpperCase();
+        } else {
+            Utilites.showAlertinUi(context, context.getString(R.string.no_city_info));
+        }
+
         refreshWeatherData();
+    }
+
+    public String getCurrentTemp() {
+        return currentTemp;
+    }
+
+    public String getCurrentHumid() {
+        return currentHumid;
+    }
+
+    public String getCurrentPress() {
+        return currentPress;
+    }
+
+    public String getCurrentWindDir() {
+        return currentWindDir;
+    }
+
+    public String getCurrentWindSpeed() {
+        return currentWindSpeed;
     }
 
     public boolean isNeedWindAndPressure() {
@@ -96,6 +151,74 @@ public class Settings {
     public HashMap<String, Integer> getThemesList() {
         return this.themesList;
     }
+
+    public void getWeatherDataFromServerForCityId(String cityId) {
+
+        weather_URL = "https://api.openweathermap.org/data/2.5/weather?id=" + dataStore.getCityIdByName(city) + "&units=metric&appid=";
+
+        try {
+            final URL uri = new URL(weather_URL + "b61da6442815c74b58fcc7eec8f10bbc");
+            final Handler handler = new Handler(); // Запоминаем основной поток
+
+            Thread t = new Thread(new Runnable() {
+                public void run() {
+                    HttpsURLConnection urlConnection = null;
+                    try {
+                        urlConnection = (HttpsURLConnection) uri.openConnection();
+                        urlConnection.setRequestMethod("GET"); // установка метода получения данных -GET
+                        urlConnection.setReadTimeout(10000); // установка таймаута - 10 000 миллисекунд
+                        BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream())); // читаем  данные в поток
+                        String result = getLines(in);
+                        // преобразование данных запроса в модель
+                        Gson gson = new Gson();
+                        final WeatherRequest weatherRequest = gson.fromJson(result, WeatherRequest.class);
+                        // Возвращаемся к основному потоку
+                        setWeather(weatherRequest);
+
+                    } catch (Exception e) {
+
+                        Utilites.showAlertinUi(context, context.getString(R.string.server_get_data_error));
+
+                        Log.e(TAG, "Fail connection", e);
+                        e.printStackTrace();
+                    } finally {
+                        if (null != urlConnection) {
+                            urlConnection.disconnect();
+                        }
+                    }
+                }
+
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "Fail URI", e);
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getLines(BufferedReader in) {
+        return in.lines().collect(Collectors.joining("\n"));
+    }
+
+    private void setWeather(WeatherRequest weatherRequest) {
+
+        this.currentTemp = String.format(Locale.getDefault(), "%d", (int) weatherRequest.getMain().getTemp());
+
+        this.currentPress = String.format(Locale.getDefault(), "%d", (int) (weatherRequest.getMain().getPressure() * 0.75));
+
+        this.currentHumid = String.format(Locale.getDefault(), "%d", weatherRequest.getMain().getHumidity());
+
+        this.currentWindSpeed = String.format(Locale.getDefault(), "%.1f", weatherRequest.getWind().getSpeed());
+
+    }
+
 
     private void fillThemesList() {
         themesList = new HashMap<String, Integer>();

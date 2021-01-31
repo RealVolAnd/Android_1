@@ -25,4 +25,7 @@
     <string name="save_settings">СОХРАНИТЬ</string>
     <string name="Save_settings_A">Сохранить настройки?</string>
     <string name="Save_A">Сохранить</string>
+    <string name="m_s">м/с</string>
+    <string name="server_get_data_error">Ошибка получения данных с сервера</string>
+    <string name="no_city_info">По этому городу нет информации</string>
 </resources>

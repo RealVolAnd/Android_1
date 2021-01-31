@@ -7,10 +7,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentStateAdapter pagerAdapter;
     ViewPager2 viewPager2;
-    TextView cityBtn;
+    TextView cityBtn, tempTextBig, hX, pX, wY;
     ConstraintLayout pL, wL;
     TabLayout tabLayout;
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         settings = Settings.getInstance(this);
+
         setTheme(settings.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -53,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
         titles = new String[]{f1, f2, f3};
 
+        tempTextBig = (TextView) findViewById(R.id.tempTextBig);
+
+        hX = (TextView) findViewById(R.id.hX);
+        hX.setText(settings.getCurrentHumid());
+        pX = (TextView) findViewById(R.id.pX);
+        pX.setText(settings.getCurrentPress());
+        wY = (TextView) findViewById(R.id.wY);
+        wY.setText(settings.getCurrentWindSpeed());
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         cityBtn = (TextView) findViewById(R.id.cityBtn);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPager2);
@@ -79,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
         settings.saveData();
         settings.destroyInstance();
         super.onDestroy();
+    }
+
+    public void showToast(final String toast) {
+        runOnUiThread(() -> Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_SHORT).show());
     }
 
     @Override
@@ -113,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
         }
         settings.saveData();
         setTheme(settings.getTheme());
+        tempTextBig.setText(settings.getCurrentTemp());
+        hX.setText(settings.getCurrentHumid());
+        pX.setText(settings.getCurrentPress());
+        wY.setText(settings.getCurrentWindSpeed());
     }
 
     public void openCityScreen(View v) {
@@ -153,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return NUM_PAGES;
         }
+    }
+
+    public void showMsg(String msg) {
+
     }
 
 
